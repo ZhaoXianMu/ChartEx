@@ -1,0 +1,103 @@
+import React from 'react';
+import {Icon, ListItem, ListItemText} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
+import {NavLinkAdapter, FuseUtils} from '@fuse';
+import {withRouter} from 'react-router-dom';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector} from 'react-redux';
+import * as Actions from 'app/store/actions';
+import FuseNavBadge from './../FuseNavBadge';
+
+const useStyles = makeStyles(theme => ({
+    item: {
+        marginLeft               : 4,
+        height                     : 40,
+        // width                      : 'calc(100% - 16px)',
+        // borderRadius               : '0 20px 20px 0',
+        // paddingRight               : 12,
+        '&.active'                 : {            
+            backgroundColor            : '#cccccc',
+            color                      : '#4d4d4d!important',
+            pointerEvents              : 'none',
+            transition                 : 'border-radius .15s cubic-bezier(0.4,0.0,0.2,1)',
+            '& .list-item-text-primary': {
+                color: 'inherit'
+            },
+            '& .list-item-icon'        : {
+                color: 'inherit'
+            }
+        },
+        '&:hover, &:focus'    : {
+            backgroundColor            : '#cccccc',
+            color                      : '#4d4d4d!important',
+        },
+        '& .list-item-icon'        : {
+            color                      : '#4d4d4d',
+        },
+        '& .list-item-text'        : {
+            color                      : '#4d4d4d',
+        },
+        
+        cursor                     : 'pointer',
+        textDecoration             : 'none!important',
+        paddingBottom           : 24,
+        paddingTop               : 24            
+    }
+}));
+
+function FuseNavVerticalItem(props)
+{
+    const dispatch = useDispatch();
+    const userRole = useSelector(({auth}) => auth.user.role);
+
+    const classes = useStyles(props);
+    const {item, nestedLevel} = props;
+    let paddingValue = 40 + (nestedLevel * 16);
+    const listItemPadding = nestedLevel > 0 ? 'pl-' + (paddingValue > 80 ? 80 : paddingValue) : 'pl-24';
+    const listTextPadding = nestedLevel > 0 ? 'pl-24' : 'pl-0';
+    if ( !FuseUtils.hasPermission(item.auth, userRole) )
+    {
+        return null;
+    }
+
+    return (
+        <ListItem
+            button
+            component={NavLinkAdapter}
+            to={item.url}
+            activeClassName="active"
+            className={clsx(classes.item, listItemPadding, 'list-item')}
+            onClick={ev => dispatch(Actions.navbarCloseMobile())}
+            exact={item.exact}
+        >
+            {item.icon && (
+                <Icon className="list-item-icon text-16 flex-shrink-0 mr-16" color="action">{item.icon}</Icon>
+            )}
+            {item.image && (
+                <img className="flex-shrink-0 mr-16" src={`assets/images/menu/${item.image}.png`} alt=""/>
+            )}
+            <ListItemText className="list-item-text" primary={item.title} classes={{primary: `text-18 list-item-text-primary ${listTextPadding}`}}/>
+            {item.badge && (
+                <FuseNavBadge badge={item.badge}/>
+            )}
+        </ListItem>
+    );
+}
+
+FuseNavVerticalItem.propTypes = {
+    item: PropTypes.shape(
+        {
+            id   : PropTypes.string.isRequired,
+            title: PropTypes.string,
+            icon : PropTypes.string,
+            image: PropTypes.string,
+            url  : PropTypes.string
+        })
+};
+
+FuseNavVerticalItem.defaultProps = {};
+
+const NavVerticalItem = withRouter(React.memo(FuseNavVerticalItem));
+
+export default NavVerticalItem;

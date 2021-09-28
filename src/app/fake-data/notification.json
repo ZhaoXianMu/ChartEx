@@ -1,0 +1,14 @@
+[
+    
+    { "name_en": "Assigned Document", "name_sp":"Comprobante Asignado", "value":	1 },
+    { "name_en": "Approval soon to expire", "name_sp":"Aprobación próxima a vencer", "value": 2 },
+    { "name_en": "Approval term expired", "name_sp":"Plazo aprobación vencido", "value": 4 },
+    { "name_en": "Approved Document", "name_sp":"Comprobante Aprobado", "value":	8 },
+    { "name_en": "Rejected Document", "name_sp":"Comprobante Rechazado", "value": 16 },
+    { "name_en": "Reassign Document", "name_sp":"Comprobante Reasignado", "value": 32 },
+    { "name_en": "Duplicate Document", "name_sp":"Comprobante Duplicado", "value": 64 },
+    { "name_en": "Unassigned Document", "name_sp":"Comprobante No asignado", "value":128 },
+    { "name_en": "Returned Document", "name_sp":"Comprobante Devuelto", "value": 256 },
+    { "name_en": "Paused Document", "name_sp":"Comprobante Pausado", "value": 512 }
+    
+]

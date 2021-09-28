@@ -1,0 +1,25 @@
+[
+    
+    { "name": "e-Ticket", "value":	101 },
+    { "name": "Nota de Crédito de e-Ticket", "value": 102 },
+    { "name": "Nota de Débito de e-Ticket", "value": 103 },
+    { "name": "e-Factura", "value":	111 },
+    { "name": "Nota de Crédito de e-Factura", "value":112 },
+    { "name": "Nota de Débito de e-Factura", "value":113 },
+    { "name": "e-Factura Exportación", "value":	121 },
+    { "name": "Nota de Crédito de e-Factura Exportación", "value":122 },
+    { "name": "Nota de Débito de e-Factura Exportación", "value":123 },
+    { "name": "e-Remito de Exportación", "value":124 },
+    { "name": "e-Ticket Venta por Cuenta Ajena", "value":131 },
+    { "name": "Nota de Crédito de e-Ticket Venta por Cuenta Ajena", "value":132 },
+    { "name": "Nota de Débito de e-Ticket Venta por Cuenta Ajena", "value":	133 },
+    { "name": "e-Factura Venta por Cuenta Ajena", "value":	141},
+    { "name": "Nota de Crédito de e-Factura Venta por Cuenta Ajena", "value":142 },
+    { "name": "Nota de Débito de e-Factura Venta por Cuenta Ajena", "value":143 },
+    { "name": "e-Boleta de entrada", "value":151 },
+    { "name": "Nota de Crédito de e-Boleta de entrada", "value":152 },
+    { "name": "Nota de Débito de e-Boleta de entrada", "value":	153 },
+    { "name": "e-Remito", "value":181 },
+    { "name": "e-Resguardo", "value":182 }
+
+]
